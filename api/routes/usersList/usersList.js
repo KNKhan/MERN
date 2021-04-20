@@ -29,7 +29,6 @@ router.post(
       min: 6
     }),
     check("confirmPassword", "Passwords do not match").custom((value, {req, loc, path}) => {
-      console.log(value, req.body.password);
       if(value !== req.body.password) {
         throw new Error("Passwords do not match");
       } else {
