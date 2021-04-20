@@ -22,7 +22,7 @@ function Header(props) {
             <img
               src={logouticon}
               alt="logout"
-              className="icon"
+              className="icon pointer"
               onClick={logOut}
             />
           </div>
