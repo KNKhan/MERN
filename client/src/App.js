@@ -28,7 +28,8 @@ class App extends React.Component {
           <BrowserRouter>
             <Switch>
               <Route path="/">
-                <Dashboard />
+                <Dashboard                 
+                usertoken={this.state.userJWT ? this.state.userJWT : ""} />
               </Route>
             </Switch>
           </BrowserRouter>

@@ -105,7 +105,10 @@ class Login extends React.Component {
     }
 
     if (this.state.logintype == "Employee") {
-      this.setState({ alertText: "Employee SSO is yet to be integrated!" });
+      this.setState({
+        formerror: [],
+        alertText: "Employee SSO is yet to be integrated!"
+      });
     }
   };
 
@@ -126,6 +129,13 @@ class Login extends React.Component {
             <div className="loginpanel">
               <h3>{this.state.signIn ? "Sign In" : "Register User"}</h3>
               <form onSubmit={this.handleSubmit} noValidate>
+                <p className="error">
+                  {this.state.formerror != ""
+                    ? this.state.formerror.map((data, index) => {
+                        return <p key={index}>{data}</p>;
+                      })
+                    : ""}
+                </p>
                 {this.state.signIn ? (
                   <p>
                     <label>Select Type</label>
@@ -138,13 +148,6 @@ class Login extends React.Component {
                 ) : (
                   ""
                 )}
-                <p className="error">
-                  {this.state.formerror != ""
-                    ? this.state.formerror.map((data, index) => {
-                        return <p key={index}>{data}</p>;
-                      })
-                    : ""}
-                </p>
                 <p>
                   <label>Username</label>
                   <input
