@@ -6,7 +6,7 @@ function Alert(props) {
     <div className="cover">
       <div className="cell">
           <div className="content">
-            <div className="close"><img src={close} alt="close" /></div>
+            <div className="close" onClick={props.onAlertClose}><img src={close} alt="close" /></div>
             {props.text}
           </div>
       </div>

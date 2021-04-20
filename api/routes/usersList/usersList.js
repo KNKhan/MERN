@@ -27,6 +27,14 @@ router.post(
     check("email", "Include a valid email").isEmail(),
     check("password", "Enter a password with 6 or more chars").isLength({
       min: 6
+    }),
+    check("confirmPassword", "Passwords do not match").custom((value, {req, loc, path}) => {
+      console.log(value, req.body.password);
+      if(value !== req.body.password) {
+        throw new Error("Passwords do not match");
+      } else {
+        return value;
+      }
     })
   ],
   async (req, res) => {

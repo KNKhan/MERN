@@ -20,6 +20,20 @@ class Login extends React.Component {
     };
   }
 
+  componentDidMount() {
+    document.addEventListener("keydown", this.onEscPress, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.onEscPress, false);
+  }
+
+  onEscPress = (event) => {
+    if (event.key === 'Escape' && this.state.alertText) {
+      this.onAlertClose();
+    }
+  }
+
   formToggle = () => {
     this.setState({ formerror: [], signIn: !this.state.signIn });
   };
@@ -27,7 +41,7 @@ class Login extends React.Component {
   onInputchange = event => {
     this.setState({
       [event.target.name]: event.target.value
-    }); 
+    });
   };
 
   handleSubmit = e => {
@@ -67,7 +81,8 @@ class Login extends React.Component {
         data: {
           name: this.state.username,
           email: this.state.email,
-          password: this.state.password
+          password: this.state.password,
+          confirmPassword: this.state.confirmPassword
         }
       })
         .then(resp => {
@@ -93,11 +108,15 @@ class Login extends React.Component {
     }
   };
 
+  onAlertClose = () => {
+    this.setState({ alertText: "" });
+  };
+
   render() {
     return (
       <div>
         {this.state.alertText != "" ? (
-          <Alert text={this.state.alertText} />
+          <Alert text={this.state.alertText} onAlertClose={this.onAlertClose} />
         ) : (
           ""
         )}
@@ -121,8 +140,8 @@ class Login extends React.Component {
                 <p className="error">
                   {this.state.formerror != ""
                     ? this.state.formerror.map((data, index) => {
-                        return <p key={index}>{data}</p>;
-                      })
+                      return <p key={index}>{data}</p>;
+                    })
                     : ""}
                 </p>
                 <p>
