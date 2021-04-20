@@ -22,9 +22,7 @@ class Dashboard extends React.Component {
           }
         })
         .then(resp => {
-          this.setState({ user: resp.data }, () =>
-            console.log("resp", resp, this.state.user)
-          );
+          this.setState({ user: resp.data });
         })
         .catch(error => {
           console.log(error);
@@ -36,9 +34,7 @@ class Dashboard extends React.Component {
     return (
       <div className="container">
         {this.state.user ? <Header user={this.state.user} /> : ""}
-        <div className="whitesection">
-
-        </div>
+        <div className="whitesection"></div>
       </div>
     );
   }

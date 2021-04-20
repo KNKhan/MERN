@@ -38,6 +38,13 @@ class Login extends React.Component {
     this.setState({ formerror: [], signIn: !this.state.signIn });
   };
 
+  onSelectchange = event => {
+    this.setState({
+      [event.target.name]: event.target.value,
+      formerror: []
+    });
+  };
+
   onInputchange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -46,6 +53,12 @@ class Login extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    if (this.state.logintype == "Employee") {
+      this.setState({
+        alertText: "Employee SSO is yet to be integrated!"
+      });
+    }
 
     if (this.state.logintype == "New Candidate") {
       if (this.state.signIn) {
@@ -103,13 +116,6 @@ class Login extends React.Component {
           }
         });
     }
-
-    if (this.state.logintype == "Employee") {
-      this.setState({
-        formerror: [],
-        alertText: "Employee SSO is yet to be integrated!"
-      });
-    }
   };
 
   onAlertClose = () => {
@@ -139,8 +145,8 @@ class Login extends React.Component {
                 {this.state.signIn ? (
                   <p>
                     <label>Select Type</label>
-                    <select onChange={this.onInputchange} name="logintype">
-                      <option selected>- Select Candidate Type -</option>
+                    <select onChange={this.onSelectchange} name="logintype">
+                      <option defaultValue>- Select Candidate Type -</option>
                       <option>Employee</option>
                       <option>New Candidate</option>
                     </select>

@@ -10,15 +10,20 @@ header {
 header div:nth-child(1) {
   display: inline;
 }
-.usericon {
+header .icon {
   width: 24px;
   height: 24px;
   margin-right: 12px;
   margin-bottom: -5px;
 }
-.name {
-  text-transform: uppercase;
+header .icon:last-child {
+  margin-left: 12px;
+  margin-right: 0;
+  margin-bottom: -7px;
 }
-.email {
+header .username {
+  text-transform: capitalize;
+}
+header .rightsec {
   float: right;
 }

@@ -14,9 +14,9 @@ class App extends React.Component {
   }
 
   tokenSet = token => {
-    if(token !== undefined) {
+    if (token !== undefined) {
       this.setState({ userJWT: token, token: !this.state.token });
-    }   
+    }
   };
 
   render() {
@@ -26,11 +26,12 @@ class App extends React.Component {
           <Login tokenSet={this.tokenSet} />
         ) : (
           <BrowserRouter>
-            <Switch>
+            <Switch>            
               <Route path="/">
-                <Dashboard                 
-                usertoken={this.state.userJWT ? this.state.userJWT : ""} />
-              </Route>
+                <Dashboard
+                  usertoken={this.state.userJWT ? this.state.userJWT : ""}
+                />
+              </Route>              
             </Switch>
           </BrowserRouter>
         )}
