@@ -1,0 +1,11 @@
+input:focus,
+select:focus,
+a:focus {
+  outline: none;
+}
+
+body {
+  background: url("./Assets/images/bottom-red-bg.jpg") center top no-repeat;
+  background-color: #a40019;
+  background-size: cover;
+}

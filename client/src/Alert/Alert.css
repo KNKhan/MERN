@@ -1,0 +1,34 @@
+.cover {
+  width: 100%;
+}
+.cover {
+  display: table;
+  position: absolute;
+  background: url(../Assets/images/bgopac.png) left top repeat;
+}
+.cell {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100vh;
+}
+.content {
+  width: max-content;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 3px 4px 13px 0px #656363;
+}
+.close,
+.close img {
+  width: 28px;
+  height: 28px;
+}
+.close {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  border-radius: 14px;
+  background: #750316;
+}
