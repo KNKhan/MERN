@@ -28,11 +28,11 @@ class Login extends React.Component {
     document.removeEventListener("keydown", this.onEscPress, false);
   }
 
-  onEscPress = (event) => {
-    if (event.key === 'Escape' && this.state.alertText) {
+  onEscPress = event => {
+    if (event.key === "Escape" && this.state.alertText) {
       this.onAlertClose();
     }
-  }
+  };
 
   formToggle = () => {
     this.setState({ formerror: [], signIn: !this.state.signIn });
@@ -90,6 +90,7 @@ class Login extends React.Component {
             this.setState({
               alertText: "User Registered! Click SignIn to login"
             });
+            this.setState({ signIn: true, formerror: [] });
           }
         })
         .catch(error => {
@@ -140,8 +141,8 @@ class Login extends React.Component {
                 <p className="error">
                   {this.state.formerror != ""
                     ? this.state.formerror.map((data, index) => {
-                      return <p key={index}>{data}</p>;
-                    })
+                        return <p key={index}>{data}</p>;
+                      })
                     : ""}
                 </p>
                 <p>
